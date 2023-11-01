@@ -1,6 +1,8 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom';
 import "./globals.css";
+import Home from './_root/pages/Home';
+import SigninForm from './_auth/forms/SigninForm';
 
 const App = () => {
   return (
