@@ -5,6 +5,7 @@ import { Home } from './_root/pages';
 import SigninForm from './_auth/forms/SigninForm';
 import SignupForm from './_auth/forms/SignupForm';
 import AuthLayout from './_auth/AuthLayout';
+import RootLayout from './_root/RootLayout';
 
 const App = () => {
   return (
@@ -17,7 +18,9 @@ const App = () => {
         </Route>
 
         {/* PRIVATE ROUTES => ACCESSIBLE TO SIGNED IN USERS */}
-        <Route index element={<Home />} />
+        <Route element={<RootLayout />}>
+          <Route index element={<Home />} />
+        </Route>
       </Routes>
     </main>
   )
