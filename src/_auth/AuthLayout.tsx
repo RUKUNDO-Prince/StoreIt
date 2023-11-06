@@ -1,10 +1,20 @@
 import React from 'react'
+import { Outlet, Navigate } from 'react-router-dom'
 
 const AuthLayout = () => {
+  const isAuthenticated = false;
+  
+
   return (
-    <div>
-      AuthLayout
-    </div>
+    <>
+      {isAuthenticated ? (
+        <Navigate to="/" />
+      ) : (
+        <>
+          <Outlet />
+        </>
+      )}
+    </>
   )
 }
 
