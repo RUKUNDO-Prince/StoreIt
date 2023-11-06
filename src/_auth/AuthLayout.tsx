@@ -11,7 +11,9 @@ const AuthLayout = () => {
         <Navigate to="/" />
       ) : (
         <>
-          <Outlet />
+          <section>
+            <Outlet />
+          </section>
         </>
       )}
     </>
