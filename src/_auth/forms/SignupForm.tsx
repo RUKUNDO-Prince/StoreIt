@@ -7,6 +7,8 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { Input } from "@/components/ui/input"
 import { SignupValidation } from '@/lib/validation'
 import Loader from '@/components/shared/Loader'
+import { Link } from 'react-router-dom'
+import SigninForm from './SigninForm'
 
 const formSchema = z.object({
   username: z.string().min(2).max(50),
@@ -15,7 +17,6 @@ const formSchema = z.object({
 const SignupForm = () => {
   const isLoading = false;
 
-  // 1. Define your form.
   const form = useForm<z.infer<typeof SignupValidation>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -26,11 +27,9 @@ const SignupForm = () => {
     },
   })
  
-  // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values)
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    // CREATE A USER
+    // const newUser = await createUserAccount(values);
   }
 
   return (
@@ -101,6 +100,7 @@ const SignupForm = () => {
           </Button>
         </form>
       </div>
+      <p className='text-small-regular text-light-2 text-center mt-2'>Already have an account? <Link to="/sign-in" className='text-primary-500 text-small-semibold ml-1'>Log in</Link></p>
     </Form>
   )
 }
