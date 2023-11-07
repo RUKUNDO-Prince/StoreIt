@@ -12,6 +12,7 @@ const formSchema = z.object({
 })
 
 const SignupForm = () => {
+  const isLoading = false;
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof SignupValidation>>({
@@ -90,7 +91,13 @@ const SignupForm = () => {
               </FormItem>
             )}
           />
-          <Button type="submit">Submit</Button>
+          <Button type="submit" className='shad-button_primary'>
+            {isLoading ? (
+              <div className='flex-center gap-2'>
+                Loading...
+              </div>
+            ) : "Submit"}
+          </Button>
         </form>
       </div>
     </Form>
