@@ -9,6 +9,7 @@ import { SignupValidation } from '@/lib/validation'
 import Loader from '@/components/shared/Loader'
 import { Link } from 'react-router-dom'
 import SigninForm from './SigninForm'
+import { createUserAccount } from '@/lib/appwrite/api'
 
 const formSchema = z.object({
   username: z.string().min(2).max(50),
@@ -29,12 +30,14 @@ const SignupForm = () => {
  
   async function onSubmit(values: z.infer<typeof formSchema>) {
     // CREATE A USER
-    // const newUser = await createUserAccount(values);
+    const newUser = await createUserAccount(values);
+
+    console.log(newUser);
   }
 
   return (
     <Form {...form}>
-      <div className='sm:w-420 flex-center flex-col'>
+      <div className='sm:w-420 flex-center flex-col max-h-screen'>
         <img src="/assets/images/logo.svg" alt="logo" />
         <h2 className='h3-bold md:h2-bold pt-5 sm:pt-12'>Create a new account</h2>
         <p className='text-light-3 small-medium md:base-regular mt-12'>To use Snapgram, please enter your details</p>
