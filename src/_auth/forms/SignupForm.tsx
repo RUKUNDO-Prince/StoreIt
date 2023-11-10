@@ -11,10 +11,6 @@ import { Link } from 'react-router-dom'
 import SigninForm from './SigninForm'
 import { createUserAccount } from '@/lib/appwrite/api'
 
-// const formSchema = z.object({
-//   username: z.string().min(2).max(50),
-// })
-
 const SignupForm = () => {
   const isLoading = false;
 
@@ -29,24 +25,10 @@ const SignupForm = () => {
   })
  
   async function onSubmit(values: z.infer<typeof SignupValidation>) {
-    // GET FORM VALUES
-    // const values = form.getValues();
-    // CREATE A USER
     const newUser = await createUserAccount(values);
 
     console.log(newUser);
   }
-
-  // async function onSubmit() {
-  //   // GET FORM VALUES
-  //   const values = form.getValues();
-  
-  //   // CREATE A USER
-  //   const newUser = await createUserAccount(values);
-  
-  //   console.log(newUser);
-  // }
-  
 
   return (
     <Form {...form}>
