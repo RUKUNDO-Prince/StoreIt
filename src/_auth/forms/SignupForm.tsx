@@ -28,7 +28,10 @@ const SignupForm = () => {
     },
   })
  
-  async function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit() {
+    // GET FORM VALUES
+    const values = form.getValues();
+    
     // CREATE A USER
     const newUser = await createUserAccount(values);
 
