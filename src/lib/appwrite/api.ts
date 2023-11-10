@@ -6,9 +6,9 @@ export async function createUserAccount (user: INewUser) {
     try {
         const newAccount = await account.create(
             ID.unique(),
+            user.name,
             user.email,
-            user.password,
-            user.name
+            user.password, 
         )
         return newAccount;
     } catch (error) {
