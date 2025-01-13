@@ -23,11 +23,11 @@ interface Props {
     fullName: string,
     avatar: string,
     email: string,
-    ownerId: string,
+    $id: string,
     accountId: string
 }
 
-const MobileNavigation = ({ fullName, email, avatar, ownerId, accountId }: Props) => {
+const MobileNavigation = ({ fullName, email, avatar, $id: ownerId, accountId }: Props) => {
     const [open, setOpen] = useState(false);
     const pathname = usePathname();
 
@@ -64,7 +64,7 @@ const MobileNavigation = ({ fullName, email, avatar, ownerId, accountId }: Props
                 </nav>
                 <Separator className="my-5 bg-light-200/20" />
                 <div className='flex flex-col justify-between gap-5 pb-5'>
-                    <FileUploader />
+                    <FileUploader ownerId={ownerId} accountId={accountId} />
                     <Button type='submit' className='mobile-sign-out-button' onClick={async () => await signOutUser()}>
                         <Image src="/assets/icons/logout.svg" alt='logout' width={24} height={24} className='' />
                         <p>Logout</p>
